@@ -1,1 +1,2 @@
-# Crear ña cLase GOD
+# Ahorcado
+Un juego sencillo escrito en C#
