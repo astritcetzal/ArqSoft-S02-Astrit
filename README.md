@@ -1,1 +1,1 @@
-# Ahorcado
+# Crear ña cLase GOD
