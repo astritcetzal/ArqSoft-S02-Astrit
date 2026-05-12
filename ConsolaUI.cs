@@ -27,6 +27,9 @@ namespace Ahorcado
                 Console.Write(_motor.LetrasUsadas.Contains(c) ? c : '_');
             }
             Console.WriteLine();
+
+            if (_motor.MostrarPista)
+                Console.WriteLine($"Pista: La palabra tiene '{_motor.PalabraSecreta[0] } ' letras.");
         }
 
         private void MostrarAhorcado()
