@@ -16,7 +16,7 @@ namespace Ahorcado
         public void MostrarTablero()
         {
             Console.Clear();
-            MostrarAhorcado(); // Asegúrate de tener este método definido en tu clase
+            MostrarAhorcado();
 
             Console.WriteLine($"Intentos restantes: {_motor.IntentosRestantes}");
             Console.WriteLine($"Letras usadas: {string.Join(", ", _motor.LetrasUsadas)}");
@@ -27,6 +27,23 @@ namespace Ahorcado
                 Console.Write(_motor.LetrasUsadas.Contains(c) ? c : '_');
             }
             Console.WriteLine();
+        }
+
+        private void MostrarAhorcado()
+        {
+            string[] etapas = new string[]
+            {
+                "-----\n |   |\n     |\n     |\n     |\n     |\n=========",
+                "-----\n |   |\n O   |\n     |\n     |\n     |\n=========",
+                "-----\n |   |\n O   |\n |   |\n     |\n     |\n=========",
+                "-----\n |   |\n O   |\n/|   |\n     |\n     |\n=========",
+                "-----\n |   |\n O   |\n/|\\  |\n     |\n     |\n=========",
+                "-----\n |   |\n O   |\n/|\\  |\n/    |\n     |\n=========",
+                "-----\n |   |\n O   |\n/|\\  |\n/ \\  |\n     |\n========="
+            };
+
+            // Lee los intentos restantes a través de la instancia del motor
+            Console.WriteLine(etapas[6 - _motor.IntentosRestantes]);
         }
 
         public char PedirLetra()
