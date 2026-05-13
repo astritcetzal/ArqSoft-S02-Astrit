@@ -15,8 +15,8 @@ if (opcion == "2")
 
     Console.CursorVisible = false;
 
-
-    while (!motor.Ganado && !motor.Perdido)
+    // Ya regresaron los paréntesis aquí porque en tu interfaz sí son métodos
+    while (!motor.Ganado() && !motor.Perdido())
     {
         ui.MostrarTablero();
         var tecla = ui.LeerTecla();
@@ -30,10 +30,10 @@ if (opcion == "2")
 
         motor.Avanzar();
         Thread.Sleep(150);
-    } // <- Aquí arreglé la llave que estaba dentro del comentario
+    }
 
     ui.MostrarTablero();
-    ui.MostrarMensaje(motor.Ganado ? "\n¡Ganaste! Llegaste a 10 puntos." : "\nGame over.");
+    ui.MostrarMensaje(motor.Ganado() ? "\n¡Ganaste! Llegaste a 10 puntos." : "\nGame over.");
 }
 else if (opcion == "1")
 {
@@ -41,6 +41,8 @@ else if (opcion == "1")
     while (jugar == true)
     {
         string categoriaElegida = Ahorcado.ConsolaUI.PedirCategoriaInicio();
+
+        // Asumiendo que PalabrasEnMemoria pide la categoría, ajusta si le inyectas el diccionario
         var repositorio = new Ahorcado.PalabrasEnMemoria(categoriaElegida);
         var motor = new Ahorcado.MotorAhorcado(repositorio);
         var ui = new Ahorcado.ConsolaUI(motor);
@@ -48,7 +50,6 @@ else if (opcion == "1")
         Console.Clear();
         Console.WriteLine($"=== AHORCADO: Categoría {categoriaElegida.ToUpper()} ===");
 
-        // Aquí sí llevan paréntesis porque en tu código del Ahorcado son métodos (funciones)
         while (!motor.Ganado() && !motor.Perdido())
         {
             ui.MostrarTablero();
