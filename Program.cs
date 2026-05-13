@@ -1,8 +1,12 @@
-﻿var repositorio = new Ahorcado.PalabrasEnMemoria();
+﻿string categoriaElegida = Ahorcado.ConsolaUI.PedirCategoriaInicio();
+var repositorio = new Ahorcado.PalabrasEnMemoria(categoriaElegida);
 var motor = new Ahorcado.MotorAhorcado(repositorio);
 var ui = new Ahorcado.ConsolaUI(motor);
 
-Console.WriteLine("=== AHORCADO ===");
+Console.Clear();
+Console.WriteLine($"=== AHORCADO: Categoría {categoriaElegida.ToUpper()} ===");
+
+
 
 while (!motor.Ganado() && !motor.Perdido())
 {
@@ -31,8 +35,7 @@ else
 
 if (ui.PreguntarOtraVez())
 {
-    var nuevoMotor = new Ahorcado.MotorAhorcado(repositorio);
-    var nuevaUI = new Ahorcado.ConsolaUI(nuevoMotor);
+    Console.WriteLine("Por ahora, reinicia la aplicación para volver a jugar.");
 
     // OJO: En este punto se instancian los objetos, pero no se reinicia el juego.
     // Para que funcione, tendrías que encapsular toda esta lógica en un ciclo 

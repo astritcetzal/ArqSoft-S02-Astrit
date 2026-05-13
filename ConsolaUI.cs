@@ -12,6 +12,18 @@ namespace Ahorcado
         {
             _motor = motor;
         }
+        public static string PedirCategoriaInicio()
+        {
+            Console.Clear();
+            Console.WriteLine("=== BIENVENIDO AL AHORCADO ===");
+            Console.WriteLine("Elige una categoría:");
+            Console.WriteLine("1. Arquitectura");
+            Console.WriteLine("2. POO");
+            Console.WriteLine("3. .NET");
+            Console.Write("\nEscribe el nombre de la categoría: ");
+
+            return Console.ReadLine();
+        }
 
         public void MostrarTablero()
         {
@@ -29,7 +41,7 @@ namespace Ahorcado
             Console.WriteLine();
 
             if (_motor.MostrarPista)
-                Console.WriteLine($"Pista: La palabra tiene '{_motor.PalabraSecreta[0] } ' letras.");
+                Console.WriteLine($"Pista: La palabra tiene '{_motor.PalabraSecreta[0]} ' letras.");
         }
 
         private void MostrarAhorcado()
