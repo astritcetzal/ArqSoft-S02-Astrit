@@ -1,46 +1,83 @@
-﻿bool jugar = true;
-while (jugar == true)
+﻿using System;
+using System.Threading;
+
+Console.Clear();
+Console.WriteLine("¿Qué juego quieres jugar?");
+Console.WriteLine("  1 — Ahorcado");
+Console.WriteLine("  2 — Viborita");
+Console.Write("Opción: ");
+var opcion = Console.ReadLine();
+
+if (opcion == "2")
 {
-    string categoriaElegida = Ahorcado.ConsolaUI.PedirCategoriaInicio();
-var repositorio = new Ahorcado.PalabrasEnMemoria(categoriaElegida);
-var motor = new Ahorcado.MotorAhorcado(repositorio);
-var ui = new Ahorcado.ConsolaUI(motor);
+    var motor = new Ahorcado.MotorViborita();
+    var ui = new Ahorcado.ConsolaUIViborita(motor);
+
+    Console.CursorVisible = false;
 
 
-
-    Console.Clear();
-   
-    Console.WriteLine($"=== AHORCADO: Categoría {categoriaElegida.ToUpper()} ===");
-
-
-
-    while (!motor.Ganado() && !motor.Perdido())
+    while (!motor.Ganado && !motor.Perdido)
     {
         ui.MostrarTablero();
-        char letra = ui.PedirLetra();
+        var tecla = ui.LeerTecla();
 
-        if (motor.LetraYaUsada(letra))
+        if (tecla == ConsoleKey.Q) break;
+
+        if (tecla != ConsoleKey.NoName)
         {
-            ui.MostrarMensaje("Ya usaste esa letra.");
-            continue;
+            motor.CambiarDireccion(tecla);
         }
 
-        motor.RegistrarLetra(letra);
-    }
+        motor.Avanzar();
+        Thread.Sleep(150);
+    } // <- Aquí arreglé la llave que estaba dentro del comentario
 
     ui.MostrarTablero();
-
-    if (motor.Ganado())
+    ui.MostrarMensaje(motor.Ganado ? "\n¡Ganaste! Llegaste a 10 puntos." : "\nGame over.");
+}
+else if (opcion == "1")
+{
+    bool jugar = true;
+    while (jugar == true)
     {
-        ui.MostrarMensaje($"\n¡Ganaste! La palabra era: {motor.PalabraSecreta}");
+        string categoriaElegida = Ahorcado.ConsolaUI.PedirCategoriaInicio();
+        var repositorio = new Ahorcado.PalabrasEnMemoria(categoriaElegida);
+        var motor = new Ahorcado.MotorAhorcado(repositorio);
+        var ui = new Ahorcado.ConsolaUI(motor);
+
+        Console.Clear();
+        Console.WriteLine($"=== AHORCADO: Categoría {categoriaElegida.ToUpper()} ===");
+
+        // Aquí sí llevan paréntesis porque en tu código del Ahorcado son métodos (funciones)
+        while (!motor.Ganado() && !motor.Perdido())
+        {
+            ui.MostrarTablero();
+            char letra = ui.PedirLetra();
+
+            if (motor.LetraYaUsada(letra))
+            {
+                ui.MostrarMensaje("Ya usaste esa letra.");
+                continue;
+            }
+
+            motor.RegistrarLetra(letra);
+        }
+
+        ui.MostrarTablero();
+
+        if (motor.Ganado())
+        {
+            ui.MostrarMensaje($"\n¡Ganaste! La palabra era: {motor.PalabraSecreta}");
+        }
+        else
+        {
+            ui.MostrarMensaje($"\nPerdiste. La palabra era: {motor.PalabraSecreta}");
+        }
+
+        jugar = ui.PreguntarOtraVez();
     }
-    else
-    {
-        ui.MostrarMensaje($"\nPerdiste. La palabra era: {motor.PalabraSecreta}");
-    }
-
-
-    
-    jugar = ui.PreguntarOtraVez();
-
+}
+else
+{
+    Console.WriteLine("\nOpción no válida.");
 }
