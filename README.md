@@ -1,7 +1,4 @@
-# Ahorcado
-Un juego sencillo escrito en C#
+# #VIBORITA
 
-Este juego viola los Principios SOLID, ya que la clase  `Juego` tiene demasiadas responsabilidades.
-SRP (Single Responsibility Principle): Juego controla turnos, dibuja el tablero, muestra mensaje y elige la palabra
-DIP (Dependency Inversion Principle): Las palabras están hardcodeadas dentro del constructor 
-OCP(Open/Closed Principle): Para agregar un segundo juego habria	 que modificar juego direcatamente
+EL dia de hoy 13-05-25 se ha creado el proyecto viborita el cual permite la interacción con el usuario en consola.
+Este proyect se ha creado con la finalidad de aprender el principio SOLID, dividiendo por responsabilidades. 
