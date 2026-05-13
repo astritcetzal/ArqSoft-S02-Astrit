@@ -14,15 +14,31 @@ namespace Ahorcado
         }
         public static string PedirCategoriaInicio()
         {
-            Console.Clear();
-            Console.WriteLine("=== BIENVENIDO AL AHORCADO ===");
-            Console.WriteLine("Elige una categoría:");
-            Console.WriteLine("1. Arquitectura");
-            Console.WriteLine("2. POO");
-            Console.WriteLine("3. .NET");
-            Console.Write("\nEscribe el nombre de la categoría: ");
-
-            return Console.ReadLine();
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("=== BIENVENIDO AL AHORCADO ===");
+                Console.WriteLine("Elige una categoría:");
+                Console.WriteLine("1. Arquitectura");
+                Console.WriteLine("2. POO");
+                Console.WriteLine("3. .NET");
+                Console.Write("\nEscribe el nombre de la categoría: ");
+                string palabra = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(palabra))
+                {
+                    Console.WriteLine("Categoría incorrecta, intenta de nuevo.");
+                    Console.ReadLine();
+                }
+                else if (palabra.ToUpper().Equals("ARQUITECTURA") || palabra.ToUpper().Equals("POO") || palabra.ToUpper().Equals(".NET"))
+                {
+                    return palabra;
+                }
+                else
+                {
+                    Console.WriteLine("Error al escribir una opción. Presiona Enter para intentar de nuevo.");
+                    Console.ReadLine();
+                }
+            }
         }
 
         public void MostrarTablero()
@@ -41,7 +57,7 @@ namespace Ahorcado
             Console.WriteLine();
 
             if (_motor.MostrarPista)
-                Console.WriteLine($"Pista: La palabra tiene '{_motor.PalabraSecreta[0]} ' letras.");
+                Console.WriteLine($"Pista: la palabra empieza con '{_motor.PalabraSecreta[0]} '.");
         }
 
         private void MostrarAhorcado()

@@ -1,43 +1,46 @@
-﻿string categoriaElegida = Ahorcado.ConsolaUI.PedirCategoriaInicio();
+﻿bool jugar = true;
+while (jugar == true)
+{
+    string categoriaElegida = Ahorcado.ConsolaUI.PedirCategoriaInicio();
 var repositorio = new Ahorcado.PalabrasEnMemoria(categoriaElegida);
 var motor = new Ahorcado.MotorAhorcado(repositorio);
 var ui = new Ahorcado.ConsolaUI(motor);
 
-Console.Clear();
-Console.WriteLine($"=== AHORCADO: Categoría {categoriaElegida.ToUpper()} ===");
+
+
+    Console.Clear();
+   
+    Console.WriteLine($"=== AHORCADO: Categoría {categoriaElegida.ToUpper()} ===");
 
 
 
-while (!motor.Ganado() && !motor.Perdido())
-{
-    ui.MostrarTablero();
-    char letra = ui.PedirLetra();
-
-    if (motor.LetraYaUsada(letra))
+    while (!motor.Ganado() && !motor.Perdido())
     {
-        ui.MostrarMensaje("Ya usaste esa letra.");
-        continue;
+        ui.MostrarTablero();
+        char letra = ui.PedirLetra();
+
+        if (motor.LetraYaUsada(letra))
+        {
+            ui.MostrarMensaje("Ya usaste esa letra.");
+            continue;
+        }
+
+        motor.RegistrarLetra(letra);
     }
 
-    motor.RegistrarLetra(letra);
-}
+    ui.MostrarTablero();
 
-ui.MostrarTablero();
+    if (motor.Ganado())
+    {
+        ui.MostrarMensaje($"\n¡Ganaste! La palabra era: {motor.PalabraSecreta}");
+    }
+    else
+    {
+        ui.MostrarMensaje($"\nPerdiste. La palabra era: {motor.PalabraSecreta}");
+    }
 
-if (motor.Ganado())
-{
-    ui.MostrarMensaje($"\n¡Ganaste! La palabra era: {motor.PalabraSecreta}");
-}
-else
-{
-    ui.MostrarMensaje($"\nPerdiste. La palabra era: {motor.PalabraSecreta}");
-}
 
-if (ui.PreguntarOtraVez())
-{
-    Console.WriteLine("Por ahora, reinicia la aplicación para volver a jugar.");
+    
+    jugar = ui.PreguntarOtraVez();
 
-    // OJO: En este punto se instancian los objetos, pero no se reinicia el juego.
-    // Para que funcione, tendrías que encapsular toda esta lógica en un ciclo 
-    // o llamar al método principal nuevamente.
 }
