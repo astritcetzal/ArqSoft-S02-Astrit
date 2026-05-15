@@ -13,7 +13,27 @@ Este proyecto es una implementación clásica del juego del Ahorcado para la con
 * **Validación robusta:** El sistema atrapa entradas vacías o incorrectas y guía al usuario sin romper la ejecución del programa.
 * **Interfaz visual:** Representación en texto del estado del ahorcado, letras usadas e intentos restantes.
 * **Ciclo de juego continuo:** Opción de jugar múltiples partidas consecutivas instanciando objetos nuevos para reiniciar el estado de forma limpia.
-capturas
+
+
+## 🖼️ Capturas
+
+**Menú**
+
+![Vista general del menu](docs/menu.png)
+
+ **Si escribes mal debes presionar 'Enter' para volver a escribir la categoria**
+
+![Vista general de pedir de nuevo](docs/pedirDeNuevo.png)
+
+**Jugando**
+
+![Vista general de jugar](docs/jugando.png)
+
+**Perdiendo**
+
+![Vista general de perder](docs/perder.png)
+
+
 ## 🤖 Declaración de uso de IA
 Para el desarrollo de este proyecto, se utilizaron herramientas de Inteligencia Artificial de manera estrictamente ética, con fines educativos y de apoyo técnico. El uso de la IA se enfocó en:
 * Resolución y comprensión de errores de compilación y de sintaxis.
