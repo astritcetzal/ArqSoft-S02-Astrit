@@ -16,7 +16,22 @@ Este proyecto es una recreación del clásico juego de la "Viborita" (Snake) que
 * **Generación aleatoria segura:** La comida aparece en lugares aleatorios del tablero, validando mediante `LINQ` que no se genere encima del cuerpo actual de la serpiente.
 * **Controles responsivos:** Cambio de dirección fluido usando las flechas del teclado, bloqueando movimientos imposibles (como ir hacia atrás sobre sí misma).
 
-{capturas}
+## 🖼️ Capturas
+
+**Menú**
+
+### Puedes elegir entre los juegos disponibles, en este caso la Viborita y el ahorcado. 
+
+![Vista general del menu](docs/menu.png)
+
+**Jugando**
+
+![Vista general de jugar](docs/jugando.png)
+
+**Perdiendo**
+
+![Vista general de perder](docs/perder.png)
+
 
 
 ## 🤖 Declaración de uso de IA
@@ -24,7 +39,7 @@ En el desarrollo de este proyecto, se utilizaron herramientas de Inteligencia Ar
 * Resolución de errores de compilación y ajustes de visibilidad de clases (modificadores de acceso `public`/`internal`).
 * Corrección de formato y anidamiento de bloques de código y comentarios.
 * Integración del flujo de la Viborita junto con otros juegos en un menú principal unificado.
-Toda la lógica final, el flujo del programa, y la integración de los componentes fueron revisados, comprendidos y estructurados por mi.
+El flujo del programa, y la integración de los componentes fueron revisados, comprendidos y estructurados por mi (Astrit Cetzal).
 
 ## 📄 Derechos de autor y Licencia
 Este proyecto es de código abierto (Open Source) y se distribuye bajo la Licencia MIT. 
@@ -33,3 +48,24 @@ Este proyecto es de código abierto (Open Source) y se distribuye bajo la Licenc
 Que cualquier persona es totalmente libre de usar este código. Puedes descargarlo, estudiarlo, modificarlo, compartirlo e incluso usarlo como base para tus propios proyectos escolares o personales sin ningún problema. 
 
 El código se comparte con el propósito de aprender en comunidad. Lo único que pide la licencia es que si lo usas, se mantenga el crédito a la autora original. ¡Siéntete libre de explorarlo y darle un buen uso!
+
+
+## 🤝 Agradecimientos
+
+- **Profesor Jorge Javier Pedrozo Romero** por el apoyo constante.
+
+---
+
+## 📧 Contacto
+
+- **Email Institucional:** [astrit.cetzal@tecdesoftware.edu.mx]
+- **GitHub:** [astritcetzal](https://github.com/astritcetzal)
+
+---
+<div align="center">
+
+**⭐ Si te gustó este proyecto, dale una estrella ⭐**
+
+Hecho con 💗 por [**Astrit Cetzal**] - 2026
+
+</div>
