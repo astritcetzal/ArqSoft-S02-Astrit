@@ -24,11 +24,11 @@ Este proyecto es una recreación del clásico juego de la "Viborita" (Snake) que
 
 ![Vista general del menu](docs/menu.png)
 
-**Jugando**
+**Jugando Viborita**
 
 ![Vista general de jugar](docs/jugando.png)
 
-**Perdiendo**
+**Perdiendo en Viborita**
 
 ![Vista general de perder](docs/perder.png)
 
